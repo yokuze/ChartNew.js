@@ -465,19 +465,25 @@ function saveCanvas(ctx,data,config,tpgraph) {
 
 
  
-        if(config.savePngOuput=="NewWindow"){
+        if(config.savePngOutput=="NewWindow"){
           var image = ctx.canvas.toDataURL();
           ctx.putImageData(cvSave,0,0); 
           window.open(image,'_blank');
         }
-        if(config.savePngOuput=="CurrentWindow"){
+        if(config.savePngOutput=="CurrentWindow"){
           var image = ctx.canvas.toDataURL();
           ctx.putImageData(cvSave,0,0); 
           window.location.href = image;
         }
-        if(config.savePngOuput=="Save"){
-          document.location.href= ctx.canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-          ctx.putImageData(cvSave,0,0); 
+        if(config.savePngOutput=="Save"){
+		  var image = ctx.canvas.toDataURL();
+          var downloadLink = document.createElement("a");
+          downloadLink.href = image;
+		  downloadLink.download = config.savePngName+".png";
+
+		  document.body.appendChild(downloadLink);
+		  downloadLink.click();
+		  document.body.removeChild(downloadLink);
         }
 
 } ;
@@ -1452,7 +1458,7 @@ window.Chart = function (context) {
         legendSpaceBetweenBoxAndText : 5,
         annotateDisplay: false,  
         savePng : false,
-        savePngOuput : "NewWindow",      // Allowed values : "NewWindow", "CurrentWindow", "Save"
+        savePngOutput : "NewWindow",      // Allowed values : "NewWindow", "CurrentWindow", "Save"
         savePngFunction: "mousedown right", 
         savePngBackgroundColor : 'WHITE',
         annotateFunction: "mousemove",
