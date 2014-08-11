@@ -1530,7 +1530,8 @@ window.Chart = function (context) {
         animationLeftToRight : false,
         animationByDataset : false,
         defaultStrokeColor : "rgba(220,220,220,1)",
-        defaultFillColor : "rgba(220,220,220,0.5)"
+        defaultFillColor : "rgba(220,220,220,0.5)",
+		savePngName: "canvas"
         
     };
 
