@@ -29,7 +29,6 @@ function gradient(area,params) {
 				}
 			}
 			GradientcolorsWithoutStep = gradientColors[i].replace(PERCENT_REGEX, "").trim();
-			console.log(stepValues[i],GradientcolorsWithoutStep);
 			grd.addColorStop(stepValues[i],GradientcolorsWithoutStep);
 		}
 		return grd;
